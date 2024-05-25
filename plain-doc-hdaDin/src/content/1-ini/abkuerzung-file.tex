@@ -1,0 +1,29 @@
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% © Benjamin Eisbach 2023-2024 -- Latex Template
+% -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+%   FILE: acronyms
+%  -------
+%  DESCRIPTION: In this file all acronyms are stored.
+%
+%  	- How to add an acro?
+% 		- \acro{usageInText}[AcroInTableOfContent]{fullWord}
+% 	- Hot to use acro in text?
+% 		- \ac{usageInText}
+% -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- -- -- -- -- -- NEWPAGE -- -- -- -- -- -- --
+% <><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\newpage
+
+\markright{Abkürzungsverzeichnis}
+\phantomsection
+\section*{Abkürzungsverzeichnis}\addcontentsline{toc}{section}{Abkürzungsverzeichnis}
+
+\begin{acronym}[ACRO] % > > place your longest acro in [ ] to have a clean line up in toc < <
+	\acro{theAC}[ACRO]{AusgeschriebenerText}
+\end{acronym}

@@ -1,0 +1,659 @@
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% © Benjamin Eisbach 2023-2024 -- Latex Template
+% -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+%   FILE: runnable
+%  -------
+%  DESCRIPTION: This file is intended to be the main file.
+% 
+%  	- include all sub content files aswell as titlepage
+%		- all configuratio is done here like code syntax highlighting
+%		- center oriented text = no thesis layout use second geometry option
+%		- right oriented text = thesis layout 
+% 	- if both sides of paper should be printed choose twoside=true in 
+% 		document class 
+% 	- use \medskip to have 6pt distance between paragraphes in text
+% -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\documentclass[fontsize=11pt, paper=a4 , twoside=false , largeheadings]{scrartcl}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- GENERAL PACKAGES 
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+%\usepackage[english,ngerman]{babel}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{color}
+\usepackage[table]{xcolor}
+\usepackage{mathptmx}
+\usepackage{amssymb,amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{soulutf8}
+\usepackage{siunitx}
+\usepackage{wrapfig}
+\usepackage{textcomp} % show degree in text (°) \textdegree
+\usepackage{lmodern}
+\usepackage{longtable}
+\usepackage{acronym}
+\usepackage{subcaption}
+
+\usepackage{hyperref}
+\hypersetup{
+	linktoc=all,
+	hidelinks,
+	bookmarks=true,         % Create Bookmarks in PDF doc
+	bookmarksopen=true,     % Open all Bookmarks when opening this document per default
+	bookmarksdepth=3,       % Depth of bookmarks
+}
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- CITATION
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\usepackage{csquotes}
+\usepackage[style=ieee, bibstyle=authoryear, maxbibnames=999, citestyle=numeric-comp, hyperref=true, backend=biber, sorting=none]{biblatex}
+%\addbibresource{bibliography.bib}
+\bibliography{bibliography.bib}
+
+\AtEveryBibitem{[\printfield{labelnumber}]\addspace}
+\renewcaptionname{ngerman}{\refname}{Literaturverzeichnis}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Table of content setting
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\addtokomafont{sectionentry}{\bfseries} % KOMA-Script-Classes only
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Caption settings
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\usepackage[font=small, singlelinecheck=off]{caption}
+\captionsetup[figure]{justification=raggedright}
+\captionsetup[table]{justification=raggedright}
+\captionsetup[lstlisting]{justification=raggedright}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Distance between two lines
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\linespread{1.5}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Justification
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\usepackage{ragged2e}
+\justifying
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Define Margins
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\usepackage[a4paper, top=3cm, bottom=2.5cm, left=3cm, right=2cm]{geometry} % right oriented text
+%\usepackage[a4paper, top=3cm, bottom=2.5cm, left=2cm, right=2cm]{geometry} % centralized
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Specify head
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\usepackage[automark,headsepline=.5pt,plainheadsepline]{scrlayer-scrpage}
+\renewcommand*{\sectionmarkformat}{}
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+%\automark[section]{section}
+\setkomafont{pagehead}{\small\upshape\color{gray}}
+\setkomafont{pagenumber}{\small\upshape\color{gray}}
+\addtokomafont{headsepline}{\color{gray}}
+
+\ihead[\headmark]{\headmark}
+\ohead[\pagemark]{\pagemark}
+
+\BeforeStartingTOC{\thispagestyle{scrheadings}}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Prevent indentation after new paragraph
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\parindent0cm 
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Equatation counter
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+%\counterwithin*{equation}{section}
+\numberwithin{equation}{section} % reset equatation counter per section
+
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Math => Cancel
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\usepackage{cancel}
+\newcommand\Ccancel[2][black]{\renewcommand\CancelColor{\color{#1}}\cancel{#2}}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Code Styling
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codeorange}{rgb}{1,0.49,0}
+\definecolor{codepink}{HTML}{FF6EC9}
+\definecolor{lightgray}{rgb}{0.97,0.97,0.97}	% gray background
+\definecolor{backcolour}{rgb}{1,1,1}			% white background
+%\definecolor{identifiercolour}{HTML}{AF3235}
+\definecolor{identifiercolour}{HTML}{6E7B8B}
+\definecolor{keywordcolour}{HTML}{473992}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- CODE
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\usepackage{listings}
+\renewcommand\lstlistingname{\small Source Code} % titel in toc
+\renewcommand\lstlistlistingname{Source Code} % titel in toc
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Code Block no highlighting
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\lstdefinestyle{basic}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{RoyalBlue},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codegreen}\footnotesize,
+	identifierstyle=\color{black},%{identifiercolour},
+	basicstyle=\fontfamily{lmtt}\selectfont\scriptsize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,   
+	mathescape=true,
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	lineskip=1pt,
+	frame=lines,
+	rulecolor=\color{codegray}
+}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Code Styling Java
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\lstdefinestyle{java}{
+	language=Java,
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{codeorange},
+	numberstyle=\tiny\color{codegray},
+	%morekeywords=[1]{keyword1, keyword2},
+	%keywordstyle=[1]{\color{codepink}},
+	%morekeywords=[2]{keyword3, keyword4},
+	%keywordstyle=[2]{\color{codeorange}},
+	stringstyle=\color{codegreen}\footnotesize,
+	identifierstyle=\color{RoyalBlue},
+	basicstyle=\fontfamily{lmtt}\selectfont\scriptsize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,   
+	mathescape=true,
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=-5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	lineskip=1pt,
+	frame=lines,
+	rulecolor=\color{codegray}
+}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Code Styling Python
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\lstdefinestyle{python}{
+	language=Python,
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{RoyalBlue},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codegreen}\footnotesize,
+	identifierstyle=\color{black},
+	basicstyle=\fontfamily{lmtt}\selectfont\scriptsize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,   
+	mathescape=true,
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	lineskip=1pt,
+	frame=lines,
+	rulecolor=\color{codegray}
+}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Code Styling C++
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\lstdefinestyle{cpp}{
+	language=C++,
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{RoyalBlue},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codegreen}\footnotesize,
+	identifierstyle=\color{black},
+	basicstyle=\fontfamily{lmtt}\selectfont\scriptsize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,   
+	mathescape=true,
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	lineskip=1pt,
+	frame=lines,
+	rulecolor=\color{codegray}
+}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Code Styling C
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\lstdefinestyle{c}{
+	language=C,
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{RoyalBlue},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codegreen}\footnotesize,
+	identifierstyle=\color{black},
+	basicstyle=\fontfamily{lmtt}\selectfont\scriptsize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,   
+	mathescape=true,
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	lineskip=1pt,
+	frame=lines,
+	rulecolor=\color{codegray}
+}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Matlab Code Color Styling
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\definecolor{colKeys}{RGB}{0,0,255}       % blue
+\definecolor{colIdentifier}{RGB}{0,0,0}   % black
+\definecolor{colComments}{RGB}{34,139,34} % green
+\definecolor{colString}{RGB}{160,32,240}  % violett
+\definecolor{backcolour}{rgb}{1,1,1}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Code Styling Matlab
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\lstdefinestyle{matlab}{
+	language=Matlab,
+	backgroundcolor=\color{backcolour},
+	basicstyle=\fontfamily{pcr}\selectfont\scriptsize,
+	breakautoindent=true,
+	breakindent=10pt,
+	breaklines=true,
+	captionpos=b,
+	mathescape=true,
+	columns=fixed,
+	commentstyle={\itshape\color{colComments}},
+	extendedchars=true,
+	float=hbp,
+	frame=tbrl,
+	identifierstyle={\color{codeorange}},
+	keywordstyle={\color{colKeys}},
+	numbers=left,
+	numbersep=5pt,
+	numberstyle=\tiny\color{codegray},
+	showspaces=false,
+	showstringspaces=false,
+	stringstyle={\color{colString}},
+	tabsize=2,
+	lineskip=1pt,
+	rulecolor=\color{codegray}
+}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Code Styling JSON
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+\definecolor{num}{rgb}{0.5,0,0} % dark red
+\definecolor{punct}{rgb}{0,0,0.5} % dark blue
+\definecolor{delim}{rgb}{0.1,0.5,0} % dark green
+\definecolor{backcolour}{rgb}{1,1,1}
+
+\lstdefinelanguage{json}{
+	basicstyle=\fontfamily{lmtt}\selectfont\scriptsize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,   
+	mathescape=true,
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=-5pt, 
+	numberstyle=\tiny\color{codegray},                 
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	lineskip=1pt,
+	frame=lines,
+	rulecolor=\color{codegray},
+	identifierstyle={\color{RoyalBlue}},
+	backgroundcolor=\color{backcolour},
+	literate=
+	*{0}{{{\color{num}0}}}{1}
+	{1}{{{\color{num}1}}}{1}
+	{2}{{{\color{num}2}}}{1}
+	{3}{{{\color{num}3}}}{1}
+	{4}{{{\color{num}4}}}{1}
+	{5}{{{\color{num}5}}}{1}
+	{6}{{{\color{num}6}}}{1}
+	{7}{{{\color{num}7}}}{1}
+	{8}{{{\color{num}8}}}{1}
+	{9}{{{\color{num}9}}}{1}
+	{:}{{{\color{punct}{:}}}}{1}
+	{,}{{{\color{punct}{,}}}}{1}
+	{\{}{{{\color{delim}{\{}}}}{1}
+	{\}}{{{\color{delim}{\}}}}}{1}
+	{[}{{{\color{delim}{[}}}}{1}
+	{]}{{{\color{delim}{]}}}}{1},
+}
+
+\lstdefinestyle{json}{language=json}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Define Python Environment
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\lstnewenvironment{python}[2][]{
+	\lstset{style=python, caption={#1}, label={#2}}
+}{}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Define Matlab Environment
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\lstnewenvironment{matlab}[2][]{
+	\lstset{style=matlab, caption={#1}, label={#2}}
+}{}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Define C++ Environment
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\lstnewenvironment{cpp}[2][]{
+	\lstset{style=cpp, caption={#1}, label={#2}} 
+}{}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Define C Environment
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\lstnewenvironment{C}[2][]{
+	\lstset{style=c, caption={#1}, label={#2}} 
+}{}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Define Java Environment
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+\lstnewenvironment{java}[2][]{
+	\lstset{style=java, caption={#1}, label={#2}} 
+}{}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Define No Highlighting Environment
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+\lstnewenvironment{basic}[2][]{
+	\lstset{style=basic, caption={#1}, label={#2}} 
+}{}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Define JSON Environment
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+\lstnewenvironment{json}[2][]{
+	\lstset{style=json, caption={#1}, label={#2}} 
+}{}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Drawing in Latex
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\usepackage{tikz}
+%\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;} 
+%\usetikzlibrary {intersections}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- Colorful Textbox
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+
+\usepackage{tcolorbox}
+\definecolor{customcolor}{RGB}{153,204,255}
+\colorlet{coverlinecolor}{customcolor}
+% for colored box use: 
+% \begin{tcolorbox}[colback=RoyalBlue!5!white,colframe=RoyalBlue!75!black,title=My nice heading] This is another \textbf{tcolorbox}.
+	% \tcblower
+	% Here, you see the lower part of the box.
+	% \end{tcolorbox}
+
+
+
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- MAIN DOC
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+\begin{document}
+	
+	\sloppy
+	
+	% - - - > > > TITELPAGE < < < - - -  
+	
+	\include{content/1-ini/titelpage}
+	\pagenumbering{Roman}
+	
+	
+	
+	% - - - > > > EIDESSTATTLICHE ERKLAERUNG < < < - - -  
+	
+	%\include{content/1-before-main/eidesstattliche-erklaerung.tex}
+	
+	
+	
+	% - - - > > > VORWORT < < < - - -  
+	
+	%\include{content/1-before-main/vorwort.tex}
+	
+	
+	
+	% - - - > > > ABSTRACT < < < - - -  
+	
+	%\include{content/1-before-main/kurzfassung.tex}
+	
+	
+	
+	% - - - > > > TABLE OF CONTENT < < < - - -  
+	
+	\newpage 
+	\phantomsection
+	\addcontentsline{toc}{section}{Inhaltsverzeichnis}
+	\tableofcontents
+	
+	
+	
+	% - - - > > > TABLE OF GRAPHICS < < < - - -  
+	
+	%\newpage
+	%\phantomsection
+	%\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+	%\listoffigures
+	
+	
+	
+	% - - - > > > TABLE OF TABLES < < < - - -  
+	
+	%\newpage
+	%\phantomsection
+	%\addcontentsline{toc}{section}{Tabellenverzeichnis}
+	%\listoftables
+	
+	
+	
+	% - - - > > > ACRONYMS < < < - - -  
+	
+	\include{content/1-ini/abkuerzung-file.tex}
+	
+	
+	
+	% - - - > > > TABLE OF SOURCE CODE < < < - - -  
+	
+	%\newpage
+	%\phantomsection
+	%\addcontentsline{toc}{section}{Source Code Verzeichnis}
+	%\renewcommand{\lstlistlistingname}{Source Code Verzeichnis}
+	%\lstlistoflistings
+	
+	
+	
+	% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	% -- -- BEGIN OF CONTENT
+	% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	
+	\newpage
+	\clearpage
+	\pagenumbering{arabic}
+	
+	
+	
+	% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	% -- -- INCLUDES
+	% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	
+	
+	
+	% - - - > > > INTRODUCTION < < < - - -  
+	
+	\include{content/2-main/1-einleitung.tex}
+	
+	
+	
+	% - - - > > > LOAD YOUR CONTENT . . . < < < - - -  
+	
+	
+	
+	% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	% -- -- BIBLIOGRAPHY
+	% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	
+	%\newpage
+	%	\pagestyle{empty} 
+	%\pagenumbering{Roman}
+	%\phantomsection
+	%\setcounter{page}{12} % - - - > > > ADJUST TO YOUR SETUP . . . < < < - - -
+	%\printbibliography[heading=bibintoc, title={Literaturverzeichnis}]
+	%\addcontentsline{lof}{section}{Anhang}
+	
+	
+	
+	% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	% -- -- APPENDIX
+	% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+	
+	%\include{content/3-appendix/anhang.tex}
+	
+	
+	
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+% -- -- END OF MAIN DOC
+% <><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+\end{document}

@@ -1,0 +1,13 @@
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.lof
+*.out
+runnable.pdf
+*.lot
+*.run.xml
+*.synctex.gz
+*.toc
+.DS_Store
