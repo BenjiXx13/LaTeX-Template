@@ -1,6 +1,9 @@
 # LaTeX-Template
 This repository contains a latex template for bachelor thesis.
 
+**<font color="red">Important:</font>** If you want to use Overleaf and the font HDADINOffice, then please set in the project settings the compiler to LuaLaTeX.\
+Otherwise the project can not be compiled.
+
 ## Sections, Sub-Sections, Sub-Sub-Sections
 To have a nice overview within your .tex doc you can follow my commenting style.
 
